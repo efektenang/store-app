@@ -10,6 +10,7 @@ import {
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 import Link from 'next/link';
+import Sidebar from './Siderbar';
 
 const { Header, Sider, Content } = Layout;
 
@@ -21,37 +22,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     return (
         <Layout className='h-screen'>
             <Sider trigger={null} collapsible collapsed={collapsed}>
-                <div className="grid text-white text-xl font-bold py-2 justify-items-center">
-                    Store App
-                </div>
-                <Menu
-                    theme="dark"
-                    mode="inline"
-                    defaultSelectedKeys={['1']}
-                    items={[
-                        {
-                            key: '1',
-                            icon: <HomeOutlined />,
-                            label: (
-                                <Link href={'/'}>Home</Link>
-                            ),
-                        },
-                        {
-                            key: '2',
-                            icon: <ContactsOutlined />,
-                            label: (
-                                <Link href={'/contact'}>Contact Us</Link>
-                            ),
-                        },
-                        {
-                            key: '3',
-                            icon: <InfoCircleOutlined />,
-                            label: (
-                                <Link href={'/about'}>About Us</Link>
-                            ),
-                        },
-                    ]}
-                />
+                <Sidebar />
             </Sider>
             <Layout>
                 <Header style={{ padding: 0, background: colorBgContainer }}>
