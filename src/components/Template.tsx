@@ -1,41 +1,23 @@
 'use client'
 
-import React, { useState } from 'react';
-import {
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
-    InfoCircleOutlined,
-    HomeOutlined,
-    ContactsOutlined,
-} from '@ant-design/icons';
+import React from 'react';
 import { Button, Layout, Menu, theme } from 'antd';
-import Link from 'next/link';
 import Sidebar from './Siderbar';
+import { Footer } from 'antd/es/layout/layout';
 
 const { Header, Sider, Content } = Layout;
 
 export default function Template({ children }: { children: React.ReactNode }) {
-    const [collapsed, setCollapsed] = useState(false);
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
     return (
-        <Layout className='h-screen'>
-            <Sider trigger={null} collapsible collapsed={collapsed}>
+        <Layout>
+            <Sider trigger={null} style={{ overflow: 'auto', height: '100vh', position: 'fixed' }}>
                 <Sidebar />
             </Sider>
-            <Layout>
+            <Layout style={{ marginLeft: 200 }}>
                 <Header style={{ padding: 0, background: colorBgContainer }}>
-                    <Button
-                        type="text"
-                        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                        onClick={() => setCollapsed(!collapsed)}
-                        style={{
-                            fontSize: '16px',
-                            width: 64,
-                            height: 64,
-                        }}
-                    />
                 </Header>
                 <Content
                     style={{
@@ -48,6 +30,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
                 >
                     {children}
                 </Content>
+                <Footer style={{ textAlign: 'center' }}>
+                    Store App ©{new Date().getFullYear()} Created by Efek Tenang
+                </Footer>
             </Layout>
         </Layout>
     )
