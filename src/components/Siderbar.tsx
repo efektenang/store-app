@@ -1,14 +1,23 @@
+"use client"
+
 import { Menu } from 'antd'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   InfoCircleOutlined,
   HomeOutlined,
   ContactsOutlined,
   ProductOutlined
-} from '@ant-design/icons';
+} from '@ant-design/icons'
+import { usePathname } from 'next/navigation'
 
 export default function Sidebar() {
+  const usePath = usePathname()
+  const [path, setPath] = useState(usePath)
+  
+  useEffect(() => {
+    setPath(usePath)
+  }, [])
   return (
     <div>
       <div className="grid text-white text-xl font-bold py-2 ml-2 justify-items-center">
@@ -17,34 +26,34 @@ export default function Sidebar() {
       <Menu
         theme="dark"
         mode="inline"
-        defaultSelectedKeys={['1']}
+        defaultSelectedKeys={[path]}
         items={[
           {
-            key: '1',
+            key: '/home',
             icon: <HomeOutlined />,
             label: (
-              <Link href={'/'}>Home</Link>
+              <Link href={'/'} onClick={() => setPath(usePath)}>Home</Link>
             ),
           },
           {
-            key: '2',
+            key: '/product',
             icon: <ProductOutlined />,
             label: (
-              <Link href={'/product'}>Product</Link>
+              <Link href={'/product'} onClick={() => setPath(usePath)}>Product</Link>
             ),
           },
           {
-            key: '3',
+            key: '/contact',
             icon: <ContactsOutlined />,
             label: (
-              <Link href={'/contact'}>Contact Us</Link>
+              <Link href={'/contact'} onClick={() => setPath(usePath)}>Contact Us</Link>
             ),
           },
           {
-            key: '4',
+            key: '/about',
             icon: <InfoCircleOutlined />,
             label: (
-              <Link href={'/about'}>About Us</Link>
+              <Link href={'/about'} onClick={() => setPath(usePath)}>About Us</Link>
             ),
           },
         ]}

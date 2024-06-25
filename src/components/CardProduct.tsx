@@ -1,30 +1,25 @@
 import React from 'react';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import Card from 'antd/es/card/Card';
 import Meta from 'antd/es/card/Meta';
+import Rating from './Rating';
 
 type ProductData = {
     title: string;
     price: number;
     description: string;
     image: string;
+    rate: number;
 }
-
 
 const CardProduct = (data: ProductData) => {
     return (
         <Card
             hoverable
-            style={{ width: 240 }}
+            style={{ width: 240, padding: '0 10px', }}
             cover={<img alt="example" src={data.image} />}
-            actions={[
-                <SettingOutlined key="setting" />,
-                <EditOutlined key="edit" />,
-                <EllipsisOutlined key="ellipsis" />,
-            ]}
         >
-
-            <Meta title={data.title} description={data.description} />
+            <Meta title={data.title} description={`$ ${data.price}`} />
+            <Rating rate={data.rate} />
         </Card>
     )
 };

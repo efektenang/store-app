@@ -1,9 +1,10 @@
 'use client'
 
 import React from 'react';
-import { Button, Layout, Menu, theme } from 'antd';
+import { Avatar, Badge, Button, Layout, Menu, theme } from 'antd';
 import Sidebar from './Siderbar';
 import { Footer } from 'antd/es/layout/layout';
+import { ShoppingCartOutlined } from '@ant-design/icons';
 
 const { Header, Sider, Content } = Layout;
 
@@ -17,7 +18,10 @@ export default function Template({ children }: { children: React.ReactNode }) {
                 <Sidebar />
             </Sider>
             <Layout style={{ marginLeft: 200 }}>
-                <Header style={{ padding: 0, background: colorBgContainer }}>
+                <Header className='flex justify-end items-center' style={{ background: colorBgContainer }}>
+                    <Badge count={5}>
+                        <Button type="default" icon={<ShoppingCartOutlined />} size={'large'} />
+                    </Badge>
                 </Header>
                 <Content
                     style={{
