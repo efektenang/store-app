@@ -3,13 +3,7 @@ import Title from "antd/es/typography/Title";
 import Text from "antd/es/typography/Text";
 import { ShoppingOutlined } from '@ant-design/icons';
 import CartButton from "@/components/AddToCart";
-
-async function getProduct(id: number) {
-    const result = await fetch(`https://fakestoreapi.com/products/${id}`)
-    if (!result.ok) throw new Error("Failed to fetch data.")
-
-    return result.json()
-}
+import { getProduct } from "@/services/global.service";
 
 export default async function ProductDetailPage({ params }: { params: { id: number } }) {
     const product = await getProduct(params.id)
