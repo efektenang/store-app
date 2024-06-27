@@ -18,3 +18,10 @@ export async function getCategories() {
 
     return result.json()
 }
+
+export async function getInCategory(category: string) {
+    const result = await fetch(`https://fakestoreapi.com/products/category/${category}`)
+    if (!result.ok) throw new Error("Failed to fetch data.")
+
+    return result.json()
+}
