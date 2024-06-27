@@ -19,7 +19,7 @@ export default function Navbar() {
     return (
         <Header style={{ display: 'flex', alignItems: 'center' }}>
             <div className="grid text-white text-xl font-bold py-2 ml-2 justify-items-center">
-                Store App
+                <Link href={"/"}>Store App</Link>
             </div>
             <Menu
                 theme="dark"
