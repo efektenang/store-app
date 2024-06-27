@@ -7,7 +7,7 @@ import {
     ShoppingCartOutlined, InfoCircleOutlined,
     HomeOutlined,
     ContactsOutlined,
-    ProductOutlined
+    ShopOutlined
 } from '@ant-design/icons';
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -35,7 +35,7 @@ export default function Navbar() {
                     },
                     {
                         key: '/product',
-                        icon: <ProductOutlined />,
+                        icon: <ShopOutlined />,
                         label: (
                             <Link href={'/product'} onClick={() => setPath(usePath)}>Product</Link>
                         ),

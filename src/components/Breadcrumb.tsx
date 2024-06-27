@@ -17,10 +17,10 @@ export default function BreadCrumb() {
     const items = [{ title: "Home" },]
     pathSegments.map((segment, index) => {
         const readableName = readableNames[segment] || segment;
-        items.push({ title: readableName })
+        items.push({ title: decodeURI(readableName) })
     })
 
     return (
-        <Breadcrumb style={{ margin: '16px 25px'}} items={items} />
+        <Breadcrumb style={{ margin: '16px 25px', textTransform: "capitalize"}} items={items} />
     )
 }

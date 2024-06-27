@@ -2,6 +2,7 @@ import React from 'react';
 import Card from 'antd/es/card/Card';
 import Meta from 'antd/es/card/Meta';
 import Rating from './Rating';
+import Image from 'next/image';
 
 type ProductData = {
     title: string;
@@ -16,7 +17,7 @@ const CardProduct = (data: ProductData) => {
         <Card
             hoverable
             style={{ width: 240, padding: '0 10px', }}
-            cover={<img alt="example" src={data.image} />}
+            cover={<Image src={data.image} alt="example" width={220} height={0}/>}
         >
             <Meta title={data.title} description={`$ ${data.price}`} />
             <Rating rate={data.rate} />

@@ -1,9 +1,10 @@
-import { Button, Image, Rate } from "antd";
+import { Button, Rate } from "antd";
 import Title from "antd/es/typography/Title";
 import Text from "antd/es/typography/Text";
 import { ShoppingOutlined } from '@ant-design/icons';
 import CartButton from "@/components/AddToCart";
 import { getProduct } from "@/services/global.service";
+import Image from "next/image";
 
 export default async function ProductDetailPage({ params }: { params: { id: number } }) {
     const product = await getProduct(params.id)
@@ -13,7 +14,9 @@ export default async function ProductDetailPage({ params }: { params: { id: numb
             <div className="flex gap-3 mt-8">
                 <Image
                     width={400}
+                    height={400}
                     src={product.image}
+                    alt="product detail"
                 />
 
                 <div className="ml-9 md:w-2/3">
