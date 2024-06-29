@@ -5,6 +5,7 @@ import { ShoppingOutlined } from '@ant-design/icons';
 import CartButton from "@/components/AddToCart";
 import { getProduct } from "@/services/global.service";
 import Image from "next/image";
+import styles from "../../styles.module.scss"
 
 export default async function ProductDetailPage({ params }: { params: { id: number } }) {
     const product = await getProduct(params.id)
@@ -27,7 +28,7 @@ export default async function ProductDetailPage({ params }: { params: { id: numb
                     <Title level={1} className="inline-block">${product.price}</Title> <p className="inline ml-4">Stock: {product.rating.count}</p>
 
                     <div className="flex gap-1">
-                        <Button type="primary" icon={<ShoppingOutlined />} size={'large'}>
+                        <Button type="primary" style={{backgroundColor: styles.secondColor}} icon={<ShoppingOutlined />} size={'large'}>
                             Buy Now
                         </Button>
                         <CartButton />
